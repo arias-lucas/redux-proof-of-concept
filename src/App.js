@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import Counter from "./components/Counter";
+import List from "./components/List";
+import counterReducer from "./reducers/counterReducer";
+import todoListReducer from "./reducers/todoListReducer";
 
 class App extends Component {
+  combinatedReducers = combineReducers({
+    counter: counterReducer,
+    list: todoListReducer
+  });
+  store = createStore(this.combinatedReducers);
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Provider store={this.store}>
+          <Counter />
+          <List />
+        </Provider>
       </div>
     );
   }
