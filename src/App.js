@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import Counter from "./components/Counter";
 import List from "./components/List";
-import counterReducer from "./reducers/counterReducer";
-import todoListReducer from "./reducers/todoListReducer";
+import reducers from "./reducers/index";
 import rootSaga from "./sagas/sagas";
 
 class App extends Component {
@@ -14,14 +13,7 @@ class App extends Component {
   constructor() {
     super();
     const sagaMiddleware = createSagaMiddleware();
-    const combinatedReducers = combineReducers({
-      counter: counterReducer,
-      list: todoListReducer
-    });
-    this.store = createStore(
-      combinatedReducers,
-      applyMiddleware(sagaMiddleware)
-    );
+    this.store = createStore(reducers, applyMiddleware(sagaMiddleware));
     sagaMiddleware.run(rootSaga);
   }
 
