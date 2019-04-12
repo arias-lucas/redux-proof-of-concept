@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension";
 import Counter from "./components/Counter";
 import List from "./components/List";
 import reducers from "./reducers/index";
@@ -13,7 +14,10 @@ class App extends Component {
   constructor() {
     super();
     const sagaMiddleware = createSagaMiddleware();
-    this.store = createStore(reducers, applyMiddleware(sagaMiddleware));
+    this.store = createStore(
+      reducers,
+      composeWithDevTools(applyMiddleware(sagaMiddleware))
+    );
     sagaMiddleware.run(rootSaga);
   }
 
