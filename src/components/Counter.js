@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const counterValue = 5;
+const value = 5;
 
 function Counter(props) {
   return (
@@ -10,6 +10,7 @@ function Counter(props) {
       <button onClick={props.decrement}>Decrement</button>
       <button onClick={props.reset}>Reset</button>
       <button onClick={props.increment}>Increment</button>
+      <button onClick={props.incrementAsync}>Increment async</button>
     </div>
   );
 }
@@ -22,9 +23,10 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    increment: () => dispatch({ type: "INCREMENT", value: counterValue }),
-    decrement: () => dispatch({ type: "DECREMENT", value: counterValue }),
-    reset: () => dispatch({ type: "RESET" })
+    decrement: () => dispatch({ type: "DECREMENT", value: value }),
+    reset: () => dispatch({ type: "RESET" }),
+    increment: () => dispatch({ type: "INCREMENT", value: value }),
+    incrementAsync: () => dispatch({ type: "INCREMENT_ASYNC", value: value })
   };
 };
 
