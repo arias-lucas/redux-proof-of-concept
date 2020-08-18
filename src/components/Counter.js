@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 
 const value = 5;
 
-function Counter(props) {
+function Counter({ count, decrement, reset, increment, incrementAsync }) {
   return (
     <div>
-      <div>Counter: {props.count}</div>
-      <button onClick={props.decrement}>Decrement</button>
-      <button onClick={props.reset}>Reset</button>
-      <button onClick={props.increment}>Increment</button>
-      <button onClick={props.incrementAsync}>Increment async</button>
+      <div>Counter: {count}</div>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={increment}>Increment</button>
+      <button onClick={incrementAsync}>Increment async</button>
     </div>
   );
 }

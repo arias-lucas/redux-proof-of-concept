@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-function List(props) {
+function List({ todoList, addTodo }) {
   return (
     <div>
-      <div>Todo list: {props.todoList.join(', ')}</div>
-      <button onClick={props.addTodo}>Add text</button>
+      <div>Todo list: {todoList.join(', ')}</div>
+      <button onClick={addTodo}>Add text</button>
     </div>
   );
 }
