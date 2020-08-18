@@ -15,18 +15,16 @@ function Counter(props) {
   );
 }
 
-const mapStateToProps = function(state) {
-  return {
-    count: state.counter
-  };
+const mapStateToProps = function (state) {
+  return { count: state.counter };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    decrement: () => dispatch({ type: "DECREMENT", value: value }),
+    decrement: () => dispatch({ type: "DECREMENT", value }),
     reset: () => dispatch({ type: "RESET" }),
-    increment: () => dispatch({ type: "INCREMENT", value: value }),
-    incrementAsync: () => dispatch({ type: "INCREMENT_ASYNC", value: value })
+    increment: () => dispatch({ type: "INCREMENT", value }),
+    incrementAsync: () => dispatch({ type: "INCREMENT_ASYNC", value })
   };
 };
 

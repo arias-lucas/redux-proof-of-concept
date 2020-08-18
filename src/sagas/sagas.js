@@ -4,7 +4,9 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 
 function* incrementAsync({ value }) {
   yield delay(1000);
-  yield put({ type: "INCREMENT", value: value });
+  yield put({ type: "INCREMENT", value });
+  yield delay(1000);
+  yield put({ type: "DECREMENT", value: 3 });
 }
 
 function* watchIncrementAsync() {
